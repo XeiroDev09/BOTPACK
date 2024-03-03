@@ -45,8 +45,8 @@ module.exports = async ({ api }) => {
   autoRestart(config.autoRestart);
   acceptPending(config.acceptPending);
 
-  // AUTOGREET EVERY 10 MINUTES
-  cron.schedule('*/10 * * * *', () => {
+  // AUTOGREET EVERY 60 MINUTES
+  cron.schedule('*/60 * * * *', () => {
     const currentTime = Date.now();
     if (currentTime - lastMessageTime < minInterval) {
       console.log("Skipping message due to rate limit");
@@ -60,7 +60,7 @@ module.exports = async ({ api }) => {
       async function message(thread) {
         try {
           api.sendMessage({
-            body: `⟩ Thank you for using BotPack!\n\n⟩ Fork Here: https://replit.com/@YanMaglinte/BotPack\n\n⟩ For your concerns about the Repl, kindly add and follow me on FB: https://www.facebook.com/yandeva.me?mibextid=ZbWKwL`
+            body: `thank you for using BOTPACK\n\nfork here: https://replit.com/@XeiroDev09/BOTPACK\n\nfor your concerns about the repl, kindly add or message me on faecbook : https://www.facebook.com/100079288574657`
           }, thread.threadID, (err) => {
             if (err) return;
             messagedThreads.add(thread.threadID);
@@ -84,7 +84,7 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: true, // Set this to false to turn it off
+    scheduled: false, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 
@@ -128,7 +128,7 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: true, // Set this to false to turn it off
+    scheduled: false, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 };

@@ -2,7 +2,7 @@ module.exports.config = {
   name: "help",
   version: "1.0.2",
   hasPermission: 0,
-  credits: "Mirai Team & Mod by Yan Maglinte",
+  credits: "Mirai Team & Mod by Yan Maglinte & Remod by Edward Maquiling",
   description: "Beginner's Guide",
   usePrefix: true,
   commandCategory: "guide",
@@ -17,11 +17,11 @@ module.exports.config = {
 module.exports.languages = {
   en: {
     moduleInfo:
-      "「 %1 」\n%2\n\n❯ Usage: %3\n❯ Category: %4\n❯ Waiting time: %5 seconds(s)\n❯ Permission: %6\n\n» Module code by %7 ",
+      "「 %1 」\n%2\n\n Usage: %3\n Category: %4\n Waiting time: %5 seconds(s)\n Permission: %6\n\n» Module code by %7 ",
     helpList:
-      `◖There are %1 commands and %2 categories on this bot.`,
+      `There are %1 commands and %2 categories on this bot.`,
     guideList:
-      `◖Use: "%1${this.config.name} ‹command›" to know how to use that command!\n◖Type: "%1${this.config.name} ‹page_number›" to show that page contents!`,
+      `Use: "%1${this.config.name} ‹command›" to know how to use that command!\nType: "%1${this.config.name} ‹page_number›" to show that page contents!\n\n• MADE BY: Edward Maquiling\nhttps://www.facebook.com/100079288574657`,
     user: "User",
     adminGroup: "Admin group",
     adminBot: "Admin bot",
@@ -94,7 +94,7 @@ module.exports.run = async function ({ api, event, args, getText }) {
         currentPage = parsedPage;
       } else {
         return api.sendMessage(
-          `◖Oops! You went too far! Please choose a page between 1 and ${totalPages}◗`,
+          `Oops! You went too far! Please choose a page between 1 and ${totalPages}`,
           threadID,
           messageID
         );
@@ -113,48 +113,47 @@ module.exports.run = async function ({ api, event, args, getText }) {
       );
       const commandNames = categoryCommands.map((cmd) => cmd.config.name);
       const numberFont = [
-        "❶",
-        "❷",
-        "❸",
-        "❹",
-        "❺",
-        "❻",
-        "❼",
-        "❽",
-        "❾",
-        "❿",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "1O",
       ];
-      msg += `╭[ ${numberFont[i]} ]─❍ ${
+      msg += `[ ${numberFont[i]} ] ${
         category.charAt(0).toUpperCase() + category.slice(1)
-      }\n╰─◗ ${commandNames.join(", ")}\n\n`;
+      }\n${commandNames.join(", ")}\n\n`;
     }
 
     const numberFontPage = [
-      "❶",
-      "❷",
-      "❸",
-      "❹",
-      "❺",
-      "❻",
-      "❼",
-      "❽",
-      "❾",
-      "❿",
-      "⓫",
-      "⓬",
-      "⓭",
-      "⓮",
-      "⓯",
-      "⓰",
-      "⓱",
-      "⓲",
-      "⓳",
-      "⓴",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "1O",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "2O",
     ];
-    msg += `╭ ──────── ╮
-│ Page ${numberFontPage[currentPage - 1]} of ${
+    msg += `Page ${numberFontPage[currentPage - 1]} of ${
       numberFontPage[totalPages - 1]
-    } │\n╰ ──────── ╯\n`;
+    } \n`;
     msg += getText("helpList", commands.size, categoryCount, prefix);
 
     const axios = require("axios");
@@ -180,7 +179,7 @@ module.exports.run = async function ({ api, event, args, getText }) {
     imgP.push(fs.createReadStream(path));
     const config = require("./../../config.json")
     const msgg = {
-  body: `╭──────────────╮\n│𝖢𝗈𝗆𝗆𝖺𝗇𝖽 & 𝖢𝖺𝗍𝖾𝗀𝗈𝗋𝗒│\n╰──────────────╯\n‣ Bot Owner: ${config.DESIGN.Admin}\n\n` + msg + `\n◖Total pages available: ${totalPages}.\n` + `\n╭ ──── ╮\n│ GUIDE │\n╰ ──── ╯\n` + getText("guideList", config.PREFIX),
+  body: `[ COMMAND AND CATEGORY ]\n\n• Bot Owner: ${config.DESIGN.Admin}\nhttps://www.facebook.com/${config.ADMINBOT}\n\n` + msg + `\nTotal pages available: ${totalPages}.\n` + `\nGUIDE\n\n` + getText("guideList", config.PREFIX),
   attachment: imgP,
 };
 
@@ -213,3 +212,4 @@ module.exports.run = async function ({ api, event, args, getText }) {
     );
   }
 };
+

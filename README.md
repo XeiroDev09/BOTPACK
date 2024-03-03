@@ -1,7 +1,7 @@
 <h1>BOTPACK<sub><sub></sub><sub><sub><h6>MODIFIED BY EDWARD MAQUILING</h6></sub></sub></sub>
 </h1>
 
-a [BOTPACK](https://replit.com/@XeiroDev09/BOTPACK) messenger bot made by [Yan Maglinte](https://www.facebook.com/yandeva.me) and modified by [Edward Maquiling](https://www.facebook.com/100079288574657)
+a [BOTPACK](https://replit.com/@XeiroDev09/BOTPACK) messenger bot from [Yan Maglinte](https://www.facebook.com/yandeva.me) and remade by [Edward Maquiling](https://www.facebook.com/100079288574657)
 
 [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://replit.com/@XeiroDev09/BOTPACK)
 <h1></h1>

@@ -6,13 +6,13 @@ module.exports.config = {
   description: "GROUP UPDATE NOTIFICATION"
 };
 
-const ADMIN = 'YOUR_NAME';
-const FB_LINK = 'YOUR_FACEBOOK_LINK';
+const DEVELOPER = 'Edward Maquiling';
+const FB_LINK = 'https://www.facebook.com/100079288574657';
 
 const fs = require('fs-extra');
 const { loadImage, createCanvas, registerFont } = require("canvas");
 const request = require('request');
-//const { join } = require('path');
+const { join } = require('path');
 const axios = require('axios');
 const jimp = require("jimp")
 const fontlink = 'https://drive.google.com/u/0/uc?id=1ZwFqYB-x6S9MjPfYm3t3SP1joohGl4iw&export=download'
@@ -49,7 +49,7 @@ module.exports.run = async function({ api, event, Users }) {
     return;
   }
   if (event.logMessageData.addedParticipants && Array.isArray(event.logMessageData.addedParticipants) && event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-    //api.changeNickname(`𝗕𝗢𝗧 ${(!global.config.BOTNAME) ? "Buddy" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+    api.changeNickname(` ${(!global.config.BOTNAME) ? "Buddy" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
     
     let gifUrl = 'https://i.imgur.com/4HMupHz.gif';
 let gifPath = __dirname + '/cache/join/join.gif';
@@ -57,7 +57,7 @@ let gifPath = __dirname + '/cache/join/join.gif';
 axios.get(gifUrl, { responseType: 'arraybuffer' })
 .then(response => {
     fs.writeFileSync(gifPath, response.data);
-    return api.sendMessage("Hey There!", event.threadID, () => api.sendMessage({ body: `✅ Group Connection in ${threadName} at ${session} success! \n\n➭ Current Commands: ${commands.size}\n➭ Bot Prefix: ${global.config.PREFIX}\n➭ Version: ${global.config.version}\n➭ Admin: ‹${ADMIN}›\n➭ Facebook: ‹${FB_LINK}›\n➭ Use ${PRFX}help to view command details\n➭ Added bot at: ⟨ ${time} ⟩〈 ${thu} 〉`, attachment: fs.createReadStream(gifPath)}, threadID));
+    return api.sendMessage("Hey There!", event.threadID, () => api.sendMessage({ body: `Group Connection in ${threadName} at ${session} success! \n\nCurrent Commands: ${commands.size}\nBot Prefix: ${global.config.PREFIX}\nVersion: ${global.config.version}\nDeveloper: ${DEVELOPER}\nFacebook: ${FB_LINK}\nType “${PREFIX}help” to view command details\nAdded bot at: ⟨ ${time} ⟩〈 ${thu} 〉`, attachment: fs.createReadStream(gifPath)}, threadID));
 })
 .catch(error => {
     console.error(error);
@@ -146,7 +146,7 @@ axios.get(gifUrl, { responseType: 'arraybuffer' })
         abx.push(fs.createReadStream(__dirname + `/cache/join/${o}.png`))
       }
       memLength.sort((a, b) => a - b);
-      (typeof threadData.customJoin == "undefined") ? msg = `🌟 Welcome new member {name} to the group {threadName}\n→ URL Profile:\nhttps://www.facebook.com/profile.php?id={iduser}\n→ {type} are the group's {soThanhVien}${suffix} member\n→ Added to the group by: {author}\n→ Added by facebook link: https://www.facebook.com/profile.php?id={uidAuthor}\n─────────────────\n[ {time} - {thu} ]` : msg = threadData.customJoin;
+      (typeof threadData.customJoin == "undefined") ? msg = `Welcome new member {name} to the group {threadName}\n→ URL Profile:\nhttps://www.facebook.com/profile.php?id={iduser}\n→ {type} are the group's {soThanhVien}${suffix} member\n→ Added to the group by: {author}\n→ Added by facebook link: https://www.facebook.com/profile.php?id={uidAuthor}\n─────────────────\n[ {time} - {thu} ]` : msg = threadData.customJoin;
       var nameAuthor = await Users.getNameUser(event.author)
       msg = msg
         .replace(/\{iduser}/g, iduser.join(', '))

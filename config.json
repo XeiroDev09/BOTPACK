@@ -20,7 +20,6 @@
   "PREFIX": "?",
   "ADMINBOT": [
     "YOUR_FB_UID",
-    "OTHER_FB_UID"
   ],
   "DESIGN": {
     "Title": "BotPack",
